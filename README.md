@@ -44,8 +44,8 @@ docker run --ipc host --gpus all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11
 # AFTER
 docker run --network host --ipc host --gpus all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $DATA_FOLDER:/data/ $CAM0 $CAM1 $CAM2 $CAM3  --rm -it deepfacelive
 
-# Start the app
-./start.sh
+# Start the app, remember to pass the '-c' flag to pass host cameras to docker container
+./start.sh -c
 ```
 
 
