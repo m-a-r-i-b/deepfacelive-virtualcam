@@ -10,6 +10,9 @@ import cv2
 # Check UDP traffic on port
 # tcpdump -i lo -n udp port 1234
 
+# Remove loopback devices
+# modprobe -r v4l2loopback
+
 cap = cv2.VideoCapture('udp://127.0.0.1:1234')
 
 fmt = pyvirtualcam.PixelFormat.BGR
