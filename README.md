@@ -1,7 +1,7 @@
-# Markdown syntax guide
-This script allows you to create a virtual camera and write custom stream to its output. Note this guide is specific to <b>LINUX</b>.
+# Deepfacelive-virtualcam
+Following steps allows you to create a virtual camera and write a custom stream to its output. Note this guide is specific to <b>LINUX</b>.
 
-## Step 1
+### Step 1
 
 Install v4l2loopback utility
 ```
@@ -9,7 +9,7 @@ sudo apt install v4l2loopback-dkms
 ```
 
 
-## Step 2
+### Step 2
 
 Create a virtual camera
 ```
@@ -18,7 +18,7 @@ modprobe v4l2loopback video_nr=2
 
 
 
-## Step 3
+### Step 3
 
 Verify virtual camera has been created
 ```
@@ -29,10 +29,11 @@ video2
 ```
 
 
-## Step 4
+### Step 4
 
 Modify start script of deepfacelive app, allowing it to use host network
 ```
+git clone https://github.com/iperov/DeepFaceLive
 cd DeepFaceLive/build/linux
 
 # In start.sh script add '--network host' in the docker run command
@@ -49,7 +50,7 @@ docker run --network host --ipc host --gpus all -e DISPLAY=$DISPLAY -v /tmp/.X11
 
 
 
-## Step 5
+### Step 5
 
 Verify deepfacelive app container is outputing a UDP stream on set port
 ```
@@ -58,11 +59,10 @@ tcpdump -i lo -n udp port 1234
 
 
 
-## Step 6
+### Step 6
 
 Start the virtualcam script
 ```
 python virtualcam.py
 ```
-
 
